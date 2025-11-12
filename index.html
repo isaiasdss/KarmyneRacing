@@ -8,7 +8,7 @@
   <style>
     /* --- Reset y base --- */
     *{box-sizing:border-box;margin:0;padding:0}
-    html,body{height:100%;font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; background:#050506;color:#e9e9ea}
+    html,body{height:100%;font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; background:#000000;color:#e9e9ea}
     a{color:inherit;text-decoration:none}
     img{max-width:100%;display:block}
 
@@ -17,8 +17,8 @@
       --bg:#0091ff;
       --panel:#000000;
       --muted:#9aa3a8;
-      --accent:hsl(264, 71%, 53%); /* rojo principal */
-      --accent-2:hsl(0, 0%, 0%); /* degradado secundario opcional */
+      --accent:hsl(282, 100%, 50%); /* rojo principal */
+      --accent-2:hsl(282, 100%, 50%); /* degradado secundario opcional */
       --glass: rgba(255, 0, 0, 0.288);
     }
 
@@ -35,11 +35,11 @@
 
     nav ul{display:flex;gap:12px;list-style:none}
     nav a{padding:8px 12px;border-radius:10px;color:var(--muted);font-weight:700}
-    nav a:hover{background:var(--glass);color:#fff}
+    nav a:hover{background:var(--glass);color:#ff0000}
 
     /* --- Hero --- */
     .hero{display:grid;grid-template-columns:1fr 380px;gap:28px;align-items:center;margin-top:18px}
-    .hero-card{background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent); padding:28px;border-radius:14px;box-shadow:0 8px 40px rgba(0,0,0,0.6);border:1px solid rgba(255,255,255,0.02)}
+    .hero-card{background:linear-gradient(180deg, rgb(83, 2, 2), transparent); padding:28px;border-radius:14px;box-shadow:0 8px 40px rgba(0,0,0,0.6);border:1px solid rgba(255,255,255,0.02)}
     .hero h1{font-size:34px;margin-bottom:8px}
     .hero p.lead{color:var(--muted);margin-bottom:18px;font-size:16px}
 
@@ -49,7 +49,7 @@
       background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#fff;padding:12px 16px;border-radius:12px;font-weight:800;cursor:pointer;border:none;
       box-shadow:0 10px 30px rgba(226,27,43,0.14);
     }
-    .btn.secondary{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--muted);font-weight:700}
+    .btn.secondary{background:transparent;border:1px solid rgba(255, 0, 0, 0.06);color:var(--muted);font-weight:700}
 
     /* --- Panel derecho (Discord + datos) --- */
     .card-right{background:var(--panel);padding:18px;border-radius:12px;border:1px solid rgba(255,255,255,0.02)}
@@ -65,16 +65,31 @@
     .muted{color:var(--muted);font-size:14px}
 
     /* --- Galería (placeholder) --- */
-    .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:10px}
-    .gallery div{height:120px;background:linear-gradient(90deg,rgba(255,255,255,0.02),transparent);border-radius:8px;display:flex;align-items:center;justify-content:center;color:var(--muted)}
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-top: 10px;
+}
 
-    /* --- Contacto --- */
-    form{display:grid;gap:10px}
-    input[type="text"],input[type="email"],textarea{
-      background:transparent;border:1px solid rgba(255,255,255,0.06);padding:10px;border-radius:10px;color:inherit;
-    }
-    textarea{min-height:100px;resize:vertical}
+.gallery div {
+  position: relative;
+  height: 120px;
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.02), transparent);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--muted);
+  overflow: hidden; /* evita que la imagen se salga del cuadro */
+}
 
+.gallery div img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* ajusta la imagen al tamaño del cuadro */
+  border-radius: 8px; /* mantiene el mismo borde redondeado */
+}
     /* --- Footer --- */
     footer{margin-top:28px;padding:18px 0;text-align:center;color:var(--muted);font-size:14px;border-top:1px solid rgba(255,255,255,0.02)}
 
@@ -90,7 +105,34 @@
       .gallery{grid-template-columns:1fr}
       .hero h1{font-size:26px}
       .logo-wrapper{width:52px;height:52px}
-    }
+    }/* --- Ajuste de imágenes de redes sociales --- */
+    .discord-btn img {
+   width: 32px;
+   height: 32px;
+   object-fit: contain;
+   margin-right: 8px;
+}
+
+.discord-btn {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+  background: #1a1a1a;
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-weight: 700;
+  color: white;
+  text-decoration: none;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.discord-btn:hover {
+  transform: scale(1.05);
+  background: #262626;
+}
+
+    
   </style>
 </head>
 <body>
@@ -98,6 +140,8 @@
     <header>
       <div class="brand">
         <div class="logo-wrapper">
+          <!-- Coloca tu logo aquí con el nombre karmyne-logo.png -->
+          <!-- Si se llama distinto, cambia el src -->
           <img src="karmyne-logo.png" alt="Karmyne Racing Logo" width="200">
         </div>
         <div class="brand-text">
@@ -111,7 +155,7 @@
           <li><a href="#about">Inicio</a></li>
           <li><a href="#pilotos">Pilotos</a></li>
           <li><a href="#gallery">Galería</a></li>
-          <li><a href="#contact">Contacto</a></li>
+          <li><a href="#contact">Redes Sociales</a></li>
         </ul>
       </nav>
     </header>
@@ -132,7 +176,7 @@
               Unirme al Discord
             </a>
 
-            <button class="btn secondary" onclick="scrollToSection('contact')">Contáctanos</button>
+            <button class="btn secondary" onclick="scrollToSection('contact')">Iracing
           </div>
 
           <div style="margin-top:16px;color:var(--muted)">¿Tienes interés en pilotos o en colaborar? Únete al Discord o envíanos un mensaje abajo.</div>
@@ -161,11 +205,11 @@
           <div style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap;align-items:center;justify-content:center">
             <div class="card" style="flex:1;min-width:140px;text-align:center">
               <div class="muted">Pilotos</div>
-              <strong>12</strong>
+              <strong>0</strong>
             </div>
             <div class="card" style="flex:1;min-width:140px;text-align:center">
               <div class="muted">Eventos</div>
-              <strong>8</strong>
+              <strong>1</strong>
             </div>
           </div>
         </aside>
@@ -195,15 +239,16 @@
           </div>
           <div class="card">
             <h3>Resultados</h3>
-            <p class="muted">Última carrera: Podio en la Endurance Cup — Gran trabajo del equipo.</p>
+            <p class="muted">Última carrera: P9 en VNL Nurburgrin 4 — Gran trabajo del equipo.</p>
           </div>
         </div>
       </section>
 
       <section id="gallery">
         <h2>Galería</h2>
+
         <div class="gallery">
-          <div>Imagen 1</div>
+          <div><img src="imagen-n1.PNG" alt="Karmyne Racing Logo" width="200"></div>
           <div>Imagen 2</div>
           <div>Imagen 3</div>
           <div>Imagen 4</div>
@@ -212,37 +257,17 @@
         </div>
       </section>
 
-      <section id="contact">
-        <h2>Contacto</h2>
-        <div style="display:grid;grid-template-columns:1fr 320px;gap:12px;margin-top:8px">
-          <div class="card">
-            <form id="contactForm" onsubmit="return handleSubmit(event)">
-              <label class="muted">Nombre</label>
-              <input type="text" id="name" required placeholder="Tu nombre">
-
-              <label class="muted">Correo</label>
-              <input type="email" id="email" required placeholder="tu@correo.com">
-
-              <label class="muted">Mensaje</label>
-              <textarea id="message" placeholder="Escribe tu mensaje..." required></textarea>
-
-              <div style="margin-top:10px;display:flex;gap:8px">
-                <button class="btn" type="submit">Enviar</button>
-                <button class="btn secondary" type="button" onclick="resetForm()">Limpiar</button>
-              </div>
-
-              <div id="formStatus" class="muted" style="margin-top:8px"></div>
-            </form>
-          </div>
-
           <div class="card">
             <h3>Datos</h3>
             <div class="muted" style="margin-top:8px">Discord: <a href="https://discord.gg/HvgGRN7Y" target="_blank" rel="noopener noreferrer">discord.gg/HvgGRN7Y</a></div>
             <div class="muted" style="margin-top:8px">Redes: @karmyne_racing</div>
              <a class="discord-btn" href="https://www.instagram.com/karmyne.racing/?__pwa=1#" target="_blank" rel="noopener noreferrer">
+                <img src="instagram.png" alt="Karmyne Racing Logo" width="200">
                 Instagram
              <a class="discord-btn" href="https://www.tiktok.com/@karmyne.racing?_r=1&_t=ZS-91L93I2qxRU?__pwa=1#" target="_blank" rel="noopener noreferrer">
+                <img src="tiktok.png" alt="Karmyne Racing Logo" width="200">
                 Tiktok
+            </a>
             <div style="margin-top:12px">
             </div>
           </div>
@@ -254,35 +279,6 @@
       </footer>
     </main>
   </div>
-
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    function scrollToSection(id){
-      const el = document.getElementById(id);
-      if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
-    }
-
-    function resetForm(){
-      document.getElementById('contactForm').reset();
-      document.getElementById('formStatus').textContent = '';
-    }
-
-    function handleSubmit(e){
-      e.preventDefault();
-      const name = document.getElementById('name').value.trim();
-      const email = document.getElementById('email').value.trim();
-      const message = document.getElementById('message').value.trim();
-      const status = document.getElementById('formStatus');
-      status.textContent = 'Enviando (simulado)...';
-
-      // Simulación - para envío real hay que conectar a backend o servicio (Formspree, Netlify Forms, Zapier, etc.)
-      setTimeout(()=> {
-        status.textContent = 'Mensaje enviado (simulado). ¡Gracias, ' + (name || 'amigo') + '!';
-        document.getElementById('contactForm').reset();
-      }, 900);
-      return false;
-    }
   </script>
 </body>
 </html>
